@@ -1,4 +1,4 @@
-export async const postRequest = (formData) => {
+export const postRequest = async (formData) => {
     const response = await fetch('https://api.openai.com/v1/engines/text-curie-001/completions', {
             method: 'POST',
             headers: {
@@ -7,4 +7,6 @@ export async const postRequest = (formData) => {
             },
             body: JSON.stringify(formData),
         })
+        return await response.json()
+
 }

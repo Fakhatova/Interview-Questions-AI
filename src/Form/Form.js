@@ -1,11 +1,13 @@
 import { useState } from "react"
-
+import { postRequest } from "../Api";
 const Form = () => {
 const [prompt, setPrompt] = useState('');
 
-const handleFormSubmit = (event) => {
+const handleFormSubmit = async (event) => {
     event.preventDefault()
+    await postRequest(prompt)
 }
+
 
     return (
     <form className="input-form" onSubmit={handleFormSubmit}>
