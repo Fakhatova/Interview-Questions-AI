@@ -1,7 +1,9 @@
 const Form = () => {
-    
 
+handleFormSubmit = (event) => {
 
+    event.preventDefault()
+}
 
     return (
     <form className="input-form">
@@ -9,7 +11,7 @@ const Form = () => {
         Enter prompt:
         <input type="text" name="input-text" />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" onSubmit={(event) => handleFormSubmit} />
     </form>
 
     )
