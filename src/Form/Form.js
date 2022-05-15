@@ -15,10 +15,7 @@ const handleFormSubmit = (event) => {
         </label>
         <input type="submit" value="Submit"/>
     </form>
-
     )
-
-    
 }
 
 export default Form;
