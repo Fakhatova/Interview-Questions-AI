@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 // import '../App.css';
+import Form from '../Form/Form';
 
 function App() {
   const [response, setResponse] = useState('')
@@ -12,21 +13,22 @@ function App() {
   "presence_penalty": 0.0,
   };
 
-  useEffect(() => {
-    fetch('https://api.openai.com/v1/engines/text-curie-001/completions', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.REACT_APP_INTERVIEW_API_KEY}`,
-      },
-      body: JSON.stringify(data),
+  // useEffect(() => {
+  //   fetch('https://api.openai.com/v1/engines/text-curie-001/completions', {
+  //     method: 'POST',
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${process.env.REACT_APP_INTERVIEW_API_KEY}`,
+  //     },
+  //     body: JSON.stringify(data),
 
-    })
-    .then(res => res.json()).then(data => setResponse(data.choices[0].text))
-  }, [setResponse])
+  //   })
+  //   .then(res => res.json()).then(data => setResponse(data.choices[0].text))
+  // }, [setResponse])
 
   return (
     <div className="App">
+    <Form/>
     </div>
   );
 }
