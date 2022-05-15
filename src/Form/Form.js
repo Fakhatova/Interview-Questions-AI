@@ -1,17 +1,19 @@
+import { useState } from "react"
+
 const Form = () => {
+const [prompt, setPrompt] = useState('');
 
-handleFormSubmit = (event) => {
-
+const handleFormSubmit = (event) => {
     event.preventDefault()
 }
 
     return (
-    <form className="input-form">
+    <form className="input-form" onSubmit={handleFormSubmit}>
         <label>
         Enter prompt:
-        <input type="text" name="input-text" />
+        <input type="text" name="input-text" value={prompt} onChange={(e) => setPrompt(e.target.value)}/>
         </label>
-        <input type="submit" value="Submit" onSubmit={(event) => handleFormSubmit} />
+        <input type="submit" value="Submit"/>
     </form>
 
     )
