@@ -9,8 +9,8 @@ const [response, setResponse] =  useState([])
 const handleFormSubmit = async (event) => {
     event.preventDefault()
     setPrompt('')
-    await postRequest(prompt)
-    .then(data => setResponse([{propmt: prompt, response:data.choices[0].text}]))
+    const postPrompt = await postRequest(prompt);
+    setResponse([...response, {prompt: prompt, response: postPrompt.choices[0].text}])
 }
 
 
