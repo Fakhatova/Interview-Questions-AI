@@ -1,4 +1,4 @@
-const InterviewCard = () => {
+const InterviewCard = (card) => {
     return (
         <article >
 
