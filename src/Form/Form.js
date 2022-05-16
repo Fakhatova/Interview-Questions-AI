@@ -1,11 +1,15 @@
 import { useState } from "react"
 import { postRequest } from "../Api";
+
 const Form = () => {
 const [prompt, setPrompt] = useState('');
+const [response, setResponse] =  useState(null)
 
 const handleFormSubmit = async (event) => {
     event.preventDefault()
+    setPrompt('')
     await postRequest(prompt)
+    .then(data => setResponse([data.choices[0].text]))
 }
 
 
