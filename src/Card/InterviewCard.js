@@ -1,5 +1,6 @@
 const InterviewCard = (card) => {
     return (
+
         <article >
 
         </article>

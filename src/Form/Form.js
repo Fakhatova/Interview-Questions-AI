@@ -2,25 +2,19 @@ import { useState } from "react"
 import { postRequest } from "../Api";
 import InterviewCard from "../Card/InterviewCard";
 
-const Form = () => {
+const Form = ({handleNewResponses}) => {
 const [prompt, setPrompt] = useState('');
-const [responses, setResponses] =  useState([])
 
 const handleFormSubmit = async (event) => {
     event.preventDefault()
     setPrompt('')
     const postPrompt = await postRequest(prompt);
-    setResponses([...responses, {prompt: prompt, response: postPrompt.choices[0].text}])
+    handleNewResponses(prompt, postPrompt.choices[0].text)
     
 }
 
-
-// const generateInterviewCard = (responses) => {
-//     const interviewCards = responses.map(card => <InterviewCard card={card}/>)
-// }
-
     return (
-        <main>
+    <main>
     <form className="input-form" onSubmit={handleFormSubmit}>
         <label>
         Enter prompt:
@@ -28,7 +22,6 @@ const handleFormSubmit = async (event) => {
         </label>
         <input type="submit" value="Submit"/>
     </form>
-    { responses && <InterviewCard responses={responses} />}
     </main>
     )
 }
