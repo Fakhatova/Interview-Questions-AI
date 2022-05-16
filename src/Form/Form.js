@@ -1,15 +1,16 @@
 import { useState } from "react"
 import { postRequest } from "../Api";
+import InterviewCard from "../Card/InterviewCard";
 
 const Form = () => {
 const [prompt, setPrompt] = useState('');
-const [response, setResponse] =  useState(null)
+const [response, setResponse] =  useState([])
 
 const handleFormSubmit = async (event) => {
     event.preventDefault()
     setPrompt('')
     await postRequest(prompt)
-    .then(data => setResponse([data.choices[0].text]))
+    .then(data => setResponse([{propmt: prompt, response:data.choices[0].text}]))
 }
 
 
