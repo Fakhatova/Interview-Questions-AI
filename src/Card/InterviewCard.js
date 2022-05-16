@@ -1,9 +1,14 @@
-const InterviewCard = (card) => {
+const InterviewCard = ({responses}) => {
     return (
+        
+            <section>
+            {responses.map(card => <article> 
+                <p>{card.prompt}</p>
+                
+                </article>)}
+            </section>
 
-        <article >
-
-        </article>
+        
     )
 }
 

@@ -7,12 +7,13 @@ function App() {
   const [responses, setResponses] = useState([])
   
   const handleNewResponses = (newPrompt, newResponse) => {
-    setResponses([...responses, {prompt: newPrompt, response: newResponse}])
+    setResponses([...responses, { id: Date.now(), prompt: newPrompt, response: newResponse }])
   }
+
   return (
     <div className="App">
     <Form handleNewResponses={handleNewResponses}/>
-
+    {responses &&  <InterviewCard responses = {responses}/>}
     </div>
   );
 }
