@@ -2,11 +2,12 @@ const InterviewCard = ({responses}) => {
     return (
         
             <section>
-            {responses.map(card => <article> 
-                <p>{card.prompt}</p>
-                
-                </article>)}
-            </section>
+            { responses !== [] && responses.sort((a,b) => b.id- a.id).map(data => <article key={data.id}> 
+                <p>{data.prompt}</p>
+                {data.apiResponses}
+                </article>)
+            }
+            </section> 
 
         
     )
