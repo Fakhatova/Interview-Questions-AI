@@ -1,19 +1,20 @@
 import { useState } from "react"
 import { postRequest } from "../Api";
+import InterviewCard from "../Card/InterviewCard";
 
-const Form = () => {
+const Form = ({handleNewResponses}) => {
 const [prompt, setPrompt] = useState('');
-const [response, setResponse] =  useState(null)
 
 const handleFormSubmit = async (event) => {
     event.preventDefault()
     setPrompt('')
-    await postRequest(prompt)
-    .then(data => setResponse([data.choices[0].text]))
+    const postPrompt = await postRequest(prompt);
+    handleNewResponses(prompt, postPrompt.choices[0].text)
+    
 }
 
-
     return (
+    <main>
     <form className="input-form" onSubmit={handleFormSubmit}>
         <label>
         Enter prompt:
@@ -21,6 +22,7 @@ const handleFormSubmit = async (event) => {
         </label>
         <input type="submit" value="Submit"/>
     </form>
+    </main>
     )
 }
 

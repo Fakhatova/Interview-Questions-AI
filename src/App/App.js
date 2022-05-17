@@ -1,21 +1,22 @@
 import {useState } from 'react';
 // import '../App.css';
 import Form from '../Form/Form';
+import InterviewCard from '../Card/InterviewCard';
 
 function App() {
-  const [response, setResponse] = useState('')
-  const data = {
-  "prompt": "Create a list of 8 questions for my interview with a science fiction author",
-  "temperature": 0.5,
-  "max_tokens": 150,
-  "top_p": 1.0,
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  };
+  const [responses, setResponses] = useState([])
+  
+  const handleNewResponses = (newPrompt, newResponse) => {
+    const newStringArray = newResponse.split('\n').splice(0,2)
+    console.log(newResponse)
+    setResponses([...responses, { id: Date.now(), prompt: newPrompt, apiResponses: [newResponse]}])
+    console.log('here', responses)
+  }
 
   return (
     <div className="App">
-    <Form/>
+    <Form handleNewResponses={handleNewResponses}/>
+    {responses !== [] &&  <InterviewCard responses = {responses}/>}
     </div>
   );
 }
